@@ -97,6 +97,8 @@
 
 		<h2>Atendimento ao Cliente</h2>
 
+		<h2>User: <?= $user['email'] ?></h2>
+
 		<p>
 			Precisando entrar em contato, utilize nossos canais de atendimento
 			ou consulte a documentação para mais informações
