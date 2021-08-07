@@ -13,7 +13,7 @@
 
 		<?php if (isset($error)){ ?>
 
-			<div class="alert error"><?= $error ?>
+			<div class="alert error"><?= $error ?></div>
 
 		<?php } ?>
 
@@ -27,7 +27,7 @@
 			<input name="senha" type="password" required />
 		</div>
 
-		<button>Entrar</button>
+		<button class='btn-cta btn-primary'>Entrar</button>
 
 	</form>
 

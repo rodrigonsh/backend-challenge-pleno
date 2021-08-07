@@ -182,7 +182,19 @@ a.phone, a.email { color: black; }
 
 a.phone{ border-right: 1px solid black; }
 
+.alert
+{
+    padding: 32px;
+    background: lightgray;
+    margin-bottom: 32px;
+    border-radius: 5px;
+}
 
+.alert.error
+{
+    color: red;
+    font-weight: bold;
+}
 
 @media (max-width: 980px)
 {
