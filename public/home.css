@@ -92,37 +92,7 @@
 	grid-template-columns: repeat(3, 1fr);
 }
 
-#services card
-{
-    padding: 32px;
-    text-align: center;
-    border-radius: 5px;
-}
 
-#services p
-{
-    font-size: 15px;
-    line-height: 1.5em;
-}
-
-#services card:nth-child(odd)
-{
-    background: #0195f5;
-    color: white;
-    box-shadow: 0px 3px 3px #0000003d;
-    transition: box-shadow 0.2s;
-    cursor: pointer;
-}
-
-#services card:nth-child(odd) img
-{
-    filter: invert();
-}
-
-#services card:nth-child(odd):hover
-{
-    box-shadow: 0px 6px 12px #0000004f;
-}
 
 /* 😎 **************************************/
 

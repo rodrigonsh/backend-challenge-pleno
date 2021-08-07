@@ -12,7 +12,8 @@ class Admin extends BaseController
 		session_start();
 		$id = $_SESSION['user_id'];
 
-		return $id;
+		$modelUser = new User();
+		$usuario = $modelUser->find($id);	
 
 		return view('admin');
 	}
