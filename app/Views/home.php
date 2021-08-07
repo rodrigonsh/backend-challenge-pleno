@@ -1,5 +1,14 @@
 <?php $this->extend('layout') ?>
 
+<?php $this->section('styles') ?>
+<link rel="stylesheet" href="/home.css">
+<!-- Link Swiper's CSS -->
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper/swiper-bundle.min.css"
+  />
+<?php $this->endSection() ?>
+
 <?php $this->section('content') ?>
 
 <div id="banners" class="swiper-container">

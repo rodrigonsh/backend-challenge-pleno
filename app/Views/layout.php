@@ -12,15 +12,14 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500&family=Roboto:wght@700&display=swap" rel="stylesheet"> 
 
-        <link rel="stylesheet" href="site.css">
+        <link rel="stylesheet" href="/site.css">
+        <link rel="stylesheet" href="/forms.css">
+        <?php $this->renderSection('styles') ?>
+
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <meta name="mobile-web-app-capable" content="yes">
 
-        <!-- Link Swiper's CSS -->
-    <link
-    rel="stylesheet"
-    href="https://unpkg.com/swiper/swiper-bundle.min.css"
-  />
+        
 
     </head>
     <body>
@@ -50,7 +49,7 @@
 
             </nav>
 
-            <img id="hamburguer" class='only-mobile' src="img/hamburguer.png" />
+            <img id="hamburguer" class='only-mobile' src="/img/hamburguer.png" />
 
             </div>
 

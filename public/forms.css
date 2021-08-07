@@ -1,0 +1,22 @@
+form
+{
+    padding: 64px 0px;
+}
+
+.field
+{
+    padding: 16px 0px;
+}
+
+.field label
+{
+    display: block;
+}
+
+.field input
+{
+    padding: 8px;
+    border-radius: 5px;
+    min-width: 540px;
+    border: 1px solid gray;
+}
