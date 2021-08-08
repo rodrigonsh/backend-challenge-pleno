@@ -8,7 +8,7 @@ class Auth extends BaseController
 {
 	public function login()
 	{
-		return view('login');
+		return view('login', ['contentClass'=>"auth"]);
 	}
 
 	public function doLogin()
@@ -27,7 +27,12 @@ class Auth extends BaseController
 
 		if ( sizeof($users) ==0 )
 		{
-			return view('login', ['error'=>"Usuário não encontrado"]);
+			$data = 
+			[
+				'error'=>"Usuário não encontrado",
+				'contentClass'=>'auth'
+			];
+			return view('login', $data);
 		}
 
 		$res = password_verify($senha, $users[0]['senha']);
@@ -41,8 +46,12 @@ class Auth extends BaseController
 
 		else
 		{
-			return view('login', ['error'=>"Usuário não encontrado"]);
-		}
+			$data = 
+			[
+				'error'=>"Usuário não encontrado",
+				'contentClass'=>'auth'
+			];
+			return view('login', $data);		}
 
 
 	}

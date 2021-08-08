@@ -12,6 +12,12 @@ class Home extends BaseController
 		$userModel = new User();
 		$user = $userModel->find(2);
 
-		return view('home',[ 'user'=>$user ]);
+		$data = 
+		[
+			'user'=>$user,
+			'contentClass'=>'home'
+		];
+
+		return view('home',$data);
 	}
 }

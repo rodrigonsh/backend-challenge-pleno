@@ -9,7 +9,7 @@
 <div id="admin" cards class="container">
 
 
-	<a card href="admin/users/">
+	<a card href="/admin/users">
 		
 		<img src="/img/users.png" />
 
@@ -19,7 +19,7 @@
 
 	</a>
 
-	<a card href="admin/services/">
+	<a card href="/admin/services">
 		
 		<img src="/img/services.png" />
 
@@ -29,7 +29,7 @@
 
 	</a>
 
-	<a card href="admin/clients/">
+	<a card href="/admin/clients">
 		
 		<img src="/img/clients.png" />
 

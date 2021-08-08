@@ -38,4 +38,10 @@ class User extends Model
 	protected $beforeFind           = [];
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];*/
+
+	public function fields()
+	{
+		
+	}
+
 }

@@ -40,7 +40,7 @@
 
                 <a href="#">
                     <label class='only-mobile'>Buscar&nbsp;</label>
-                    <img src="img/btn-search.png" />
+                    <img src="/img/btn-search.png" />
                 </a>
 
                 <a href="#">Ajuda</a>
@@ -55,9 +55,9 @@
 
         </header>
 
-
+        <div id="content" class='<?= $contentClass ?>'>
         <?php $this->renderSection('content') ?>
-
+        </div>
 
         <footer>
 

@@ -9,6 +9,7 @@
   />
 <?php $this->endSection() ?>
 
+
 <?php $this->section('content') ?>
 
 <div id="banners" class="swiper-container">
