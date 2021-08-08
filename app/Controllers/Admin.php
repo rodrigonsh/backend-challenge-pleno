@@ -72,9 +72,60 @@ class Admin extends BaseController
 	{
 		$data = $this->getModel($source);
 		$data['action'] = "Create";
+		$data['crudAction'] = "/admin/$source/new";
 		$data['fields'] = $data['model']->fields();
 
 		return view("form", $data);
 	}
+
+	public function saveNew( $source )
+	{
+		$data = $this->getModel($source);
+		$fields = $data['model']->fields();
+		
+		$request = service('request');
+		
+		$new = [];
+		foreach( $fields as $k=>$f )
+		{
+			$new[$k] = $request->getPost($k);
+		}
+
+		
+		$data['model']->insert($new);
+
+		return redirect()->to("/admin/$source");
+	}
+
+	public function edit( $source, $id )
+	{
+		$data = $this->getModel($source);
+		$data['action'] = "Update";
+		$data['crudAction'] = "/admin/$source/$id";
+		$data['fields'] = $data['model']->fields();
+		$data['item'] = $data['model']->find($id);
+
+		return view("form", $data);
+	}
+
+	public function save( $source, $id )
+	{
+		$data = $this->getModel($source);
+		$fields = $data['model']->fields();
+		
+		$request = service('request');
+		
+		$edit = [];
+		foreach( $fields as $k=>$f )
+		{
+			$edit[$k] = $request->getPost($k);
+		}
+
+		
+		$data['model']->update($id, $edit);
+
+		return redirect()->to("/admin/$source");
+	}
+
 
 }

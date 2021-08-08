@@ -8,7 +8,7 @@
 
 <div class='container'>
 
-<form method="POST" action="/admin/<?=$source?>/new">
+<form method="POST" action="<?=$crudAction?>">
 
 <?php if (isset($error)){ ?>
 
@@ -16,9 +16,19 @@
 
 <?php } ?>
 
-fields here
+<?php foreach( $fields as $k=>$f ): ?>
+    <div class='field'>
+        <label><?=$f['label']?></label>
+        <input
+            name="<?=$k?>" 
+            type="<?=$f['type']?>" 
+            value="<?php echo isset($item) ? $item[$k] : ''?>"
+            autocomplete="off"
+            required />
+    </div>
+<?php endforeach ?>
 
-<button class='btn-cta btn-primary'>Entrar</button>
+<button class='btn-cta btn-primary'>Salvar</button>
 
 </form>
 </div>

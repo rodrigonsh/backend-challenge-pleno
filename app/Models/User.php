@@ -14,7 +14,7 @@ class User extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['email', 'senha'];
 
 	// Dates
 	/*protected $useTimestamps        = false;
@@ -41,7 +41,19 @@ class User extends Model
 
 	public function fields()
 	{
-		
+		return
+		[
+			'email' => 
+			[
+				'type' => 'email',
+				'label' => 'eMail'
+			],
+			'senha' => 
+			[
+				'type' => 'password',
+				'label' => 'Senha'
+			]
+		];
 	}
 
 }
