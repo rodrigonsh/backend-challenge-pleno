@@ -33,7 +33,7 @@
 		
 		<img src="/img/clients.png" />
 
-		<h3>Clients</h3>
+		<h3>Clientes</h3>
 
 		<p>Eles assinam embaixo</p>
 

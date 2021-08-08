@@ -33,7 +33,12 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-
+$routes->get('/admin/(:alpha)/', 'Admin::list/$1');
+$routes->get('/admin/(:source)/new', 'Admin::new');
+$routes->get('/admin/(:source)/delete/(:id)', 'Admin::shoudDelete');
+$routes->post('/admin/:source/delete/(:id)', 'Admin::yesDelete');
+$routes->get('/admin/:source/(:id)', 'Admin::edit');
+$routes->post('/admin/:source/(:id)', 'Admin::save');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

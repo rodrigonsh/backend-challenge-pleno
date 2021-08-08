@@ -18,6 +18,9 @@ class Admin extends BaseController
 		return view('admin');
 	}
 
-	
+	public function list($source)
+	{
+		echo $source;
+	}
 
 }

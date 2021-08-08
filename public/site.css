@@ -207,6 +207,8 @@ a.phone{ border-right: 1px solid black; }
 card,
 [card]
 {
+    text-decoration: none;
+    color: black;
     display: block;
     padding: 32px;
     text-align: center;
