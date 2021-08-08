@@ -13,8 +13,6 @@ const swiper = new Swiper('#banners', {
       }
 });
 
-alert("e ae playboy")
-
 const $hamburguer = document.getElementById("hamburguer");
 const $header = document.querySelector("header");
 
@@ -42,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function()
         let $clientes = document.querySelector("#clients .container")
         $clientes.innerHTML = ""
 
-        let $services = document.querySelector("#services .container")
+        let $services = document.querySelector("#services [cards]")
         $services.innerHTML = ""
 
         let cli = data.clients

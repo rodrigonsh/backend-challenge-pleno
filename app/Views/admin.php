@@ -6,18 +6,38 @@
 	<div class='container'>Admin</div>
 </div>
 
-<div id="admin" class="container">
+<div id="admin" cards class="container">
 
 
-	<card>
+	<a card href="admin/users/">
 		
-		<img src="/img/circle.png" />
+		<img src="/img/users.png" />
 
-		<h3>HUMMM</h3>
+		<h3>Usuários</h3>
 
-		<p>asdaskd jaskldj askldj skaldjalsk</p>
+		<p>Quem pode logar</p>
 
-	</card>
+	</a>
+
+	<a card href="admin/services/">
+		
+		<img src="/img/services.png" />
+
+		<h3>Serviços</h3>
+
+		<p>O que oferecemos</p>
+
+	</a>
+
+	<a card href="admin/clients/">
+		
+		<img src="/img/clients.png" />
+
+		<h3>Clients</h3>
+
+		<p>Eles assinam embaixo</p>
+
+	</a>
 
 </div>
 

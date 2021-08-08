@@ -64,6 +64,7 @@
 #clients{ padding: 4px 0px 0px;  }
 #clients .container
 {
+    
     flex-direction: row;
 }
 #clients .container a{ flex: 1; text-align: center; }
@@ -79,17 +80,6 @@
 {
     opacity: 1;
     filter: saturate(1);
-}
-
-
-/* SERVICES ***********************************/
-
-#services .container
-{
-    display: grid;
-	grid-column-gap: 24px;
-	grid-row-gap: 24px;
-	grid-template-columns: repeat(3, 1fr);
 }
 
 
