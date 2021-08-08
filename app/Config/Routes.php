@@ -36,7 +36,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/admin/(:alpha)', 'Admin::list/$1');
 $routes->get('/admin/(:alpha)/new', 'Admin::new/$1');
 $routes->post('/admin/(:alpha)/new', 'Admin::saveNew/$1');
-$routes->get('/admin/(:alpha)/delete/(:num)', 'Admin::shoudDelete/$1/$2');
+$routes->get('/admin/(:alpha)/delete/(:num)', 'Admin::shouldDelete/$1/$2');
 $routes->post('/admin/(:alpha)/delete/(:num)', 'Admin::yesDelete/$1/$2');
 $routes->get('/admin/(:alpha)/(:num)', 'Admin::edit/$1/$2');
 $routes->post('/admin/(:alpha)/(:num)', 'Admin::save/$1/$2');

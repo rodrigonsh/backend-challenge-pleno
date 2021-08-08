@@ -8,10 +8,22 @@ use App\Models\Service;
 
 class Admin extends BaseController
 {
+
+	public function __construct()
+	{
+		session_start();
+
+		if ( !isset($_SESSION['user_id']) )
+		{
+			return redirect()->to("/auth/login");
+		}
+
+	}
+
 	public function index()
 	{
 
-		session_start();
+		
 		$id = $_SESSION['user_id'];
 
 		$modelUser = new User();
@@ -127,5 +139,43 @@ class Admin extends BaseController
 		return redirect()->to("/admin/$source");
 	}
 
+
+	public function shouldDelete($source, $id)
+	{
+		$data = $this->getModel($source);
+		$data['id'] = $id;
+		$data['item'] = $data['model']->find($id);
+		return view('delete', $data);
+	}
+
+	public function yesDelete($source, $id)
+	{
+		$data = $this->getModel($source);
+
+		$request = service('request');
+		
+		$uid = $_SESSION['user_id'];
+		$userModel = $this->getModel("users");
+		$user = $userModel['model']->find($uid);
+
+		$senha = $request->getPost('delete_confirmation');
+
+		$res = password_verify($senha, $user['senha']);
+
+		if ( $res )
+		{
+			$data['model']->delete($id);
+			return redirect()->to("/admin/$source");
+		}
+
+		else
+		{
+			$data['id'] = $id;
+			$data['item'] = $data['model']->find($id);
+			$data['error'] = "Sua senha não confere";
+			return view('delete', $data);
+		}
+
+	}
 
 }

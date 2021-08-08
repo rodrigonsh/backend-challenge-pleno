@@ -8,8 +8,8 @@
 
 <div class='container'>
 
-    <p><a class='btn-cta' href="/admin/<?=$source?>/new">📝 Novo item</a></p>
-
+    <a id="newBtn" class='btn-cta' href="/admin/<?=$source?>/new">📝 Novo item</a>
+    
     <table>
 
         <thead>
@@ -47,6 +47,13 @@
 
 <?php $this->section('content') ?>
 <style type="text/css">
+
+#newBtn
+{
+    position: absolute;
+    right: 0px;
+    top: -56px;
+}
 
 table{ width: 100%; }
 table th, table td
