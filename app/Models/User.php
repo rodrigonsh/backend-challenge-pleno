@@ -17,7 +17,7 @@ class User extends Model
 	protected $allowedFields        = ['email', 'senha'];
 
 	// Dates
-	/*protected $useTimestamps        = false;
+	protected $useTimestamps        = false;
 	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';
@@ -31,13 +31,13 @@ class User extends Model
 
 	// Callbacks
 	protected $allowCallbacks       = true;
-	protected $beforeInsert         = [];
+	protected $beforeInsert         = ['hashPassword'];
 	protected $afterInsert          = [];
-	protected $beforeUpdate         = [];
+	protected $beforeUpdate         = ['hashPassword'];
 	protected $afterUpdate          = [];
 	protected $beforeFind           = [];
 	protected $afterFind            = [];
-	protected $beforeDelete         = [];*/
+	protected $beforeDelete         = [];
 
 	public function fields()
 	{
@@ -54,6 +54,16 @@ class User extends Model
 				'label' => 'Senha'
 			]
 		];
+	}
+
+	// https://www.codeigniter.com/user_guide/models/model.html#defining-callbacks
+	protected function hashPassword(array $data)
+	{
+		if (! isset($data['data']['senha'])) return $data;
+
+		$data['data']['senha'] = password_hash($data['data']['senha'], PASSWORD_DEFAULT);
+
+		return $data;
 	}
 
 }

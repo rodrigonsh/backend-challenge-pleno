@@ -335,6 +335,11 @@ card:nth-child(odd):hover
         border: none;
     }
 
+    #header
+    {
+        padding: 20px 0px 0px;
+    }
+
     header form input[type="text"]::placeholder { color: white; }
 
     

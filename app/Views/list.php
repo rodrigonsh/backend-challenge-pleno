@@ -16,6 +16,13 @@
             <tr>
                 <th>ID</th>
                 <th>Item</th>
+
+                <?php if ( method_exists($model, 'cols') ) : ?>
+                <?php foreach($model->cols() as $col): ?>
+                <th><?=$col['label']?></th>
+                <?php endforeach ?>
+                <?php endif ?>
+
                 <th>❌ Excluir</th>
             </tr>
         </thead>
@@ -29,6 +36,13 @@
                         <?=$i[$itemName]?>
                     </a>
                 </td>
+
+                <?php if ( method_exists($model, 'cols') ) : ?>
+                <?php foreach($model->cols() as $col): ?>
+                <th><?=$col['label']?></th>
+                <?php endforeach ?>
+                <?php endif ?>
+
                 <td>
                     <a href="/admin/<?=$source?>/delete/<?=$i['id']?>">
                         ❌ Excluir

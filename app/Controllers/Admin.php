@@ -12,18 +12,13 @@ class Admin extends BaseController
 	public function __construct()
 	{
 		session_start();
-
-		if ( !isset($_SESSION['user_id']) )
-		{
-			return redirect()->to("/auth/login");
-		}
-
 	}
 
 	public function index()
 	{
 
-		
+		if ( !isset($_SESSION['user_id']) ) return redirect()->to('/auth/login');
+
 		$id = $_SESSION['user_id'];
 
 		$modelUser = new User();
@@ -71,6 +66,8 @@ class Admin extends BaseController
 
 	public function list($source)
 	{
+
+		if ( !isset($_SESSION['user_id']) ) return redirect()->to('/auth/login');
 		
 		$data = $this->getModel($source);
 
@@ -82,6 +79,8 @@ class Admin extends BaseController
 
 	public function new( $source )
 	{
+		if ( !isset($_SESSION['user_id']) ) return redirect()->to('/auth/login');
+
 		$data = $this->getModel($source);
 		$data['action'] = "Create";
 		$data['crudAction'] = "/admin/$source/new";
@@ -92,6 +91,9 @@ class Admin extends BaseController
 
 	public function saveNew( $source )
 	{
+
+		if ( !isset($_SESSION['user_id']) ) return redirect()->to('/auth/login');
+
 		$data = $this->getModel($source);
 		$fields = $data['model']->fields();
 		
@@ -111,6 +113,9 @@ class Admin extends BaseController
 
 	public function edit( $source, $id )
 	{
+
+		if ( !isset($_SESSION['user_id']) ) return redirect()->to('/auth/login');
+
 		$data = $this->getModel($source);
 		$data['action'] = "Update";
 		$data['crudAction'] = "/admin/$source/$id";
@@ -122,6 +127,8 @@ class Admin extends BaseController
 
 	public function save( $source, $id )
 	{
+		if ( !isset($_SESSION['user_id']) ) return redirect()->to('/auth/login');
+
 		$data = $this->getModel($source);
 		$fields = $data['model']->fields();
 		
@@ -142,6 +149,8 @@ class Admin extends BaseController
 
 	public function shouldDelete($source, $id)
 	{
+		if ( !isset($_SESSION['user_id']) ) return redirect()->to('/auth/login');
+
 		$data = $this->getModel($source);
 		$data['id'] = $id;
 		$data['item'] = $data['model']->find($id);
@@ -150,6 +159,9 @@ class Admin extends BaseController
 
 	public function yesDelete($source, $id)
 	{
+		if ( !isset($_SESSION['user_id']) ) return redirect()->to('/auth/login');
+
+		
 		$data = $this->getModel($source);
 
 		$request = service('request');

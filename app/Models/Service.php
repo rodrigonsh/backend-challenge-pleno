@@ -14,10 +14,10 @@ class Service extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['title', 'image', 'description'];
 
 	// Dates
-	/*protected $useTimestamps        = false;
+	protected $useTimestamps        = false;
 	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';
@@ -31,12 +31,50 @@ class Service extends Model
 
 	// Callbacks
 	protected $allowCallbacks       = true;
-	protected $beforeInsert         = [];
+	protected $beforeInsert         = ['setOwner'];
 	protected $afterInsert          = [];
 	protected $beforeUpdate         = [];
 	protected $afterUpdate          = [];
 	protected $beforeFind           = [];
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];
-	protected $afterDelete          = [];*/
+	protected $afterDelete          = [];
+
+	public function fields()
+	{
+		return
+		[
+			'title' => 
+			[
+				'type' => 'text',
+				'label' => 'Título'
+			],
+			'image' => 
+			[
+				'type' => 'text',
+				'label' => 'Ícone'
+			],
+			'description' => 
+			[
+				'type' => 'text',
+				'label' => 'Descrição'
+			],
+		];
+	}
+
+	protected function setOwner(array $data)
+	{
+		$data['data']['user_id'] = $_SESSION['user_id'];
+
+		return $data;
+	}
+
+	public function cols()
+	{
+		return 
+		[
+			['label' => "Depoimentos"]
+		];
+	}
+
 }

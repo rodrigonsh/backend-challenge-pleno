@@ -17,7 +17,7 @@ class Client extends Model
 	protected $allowedFields        = [];
 
 	// Dates
-	/*protected $useTimestamps        = false;
+	protected $useTimestamps        = false;
 	protected $dateFormat           = 'datetime';
 	protected $createdField         = 'created_at';
 	protected $updatedField         = 'updated_at';
@@ -32,11 +32,42 @@ class Client extends Model
 	// Callbacks
 	protected $allowCallbacks       = true;
 	protected $beforeInsert         = [];
-	protected $afterInsert          = [];
+	protected $afterInsert          = ['setOwner'];
 	protected $beforeUpdate         = [];
 	protected $afterUpdate          = [];
 	protected $beforeFind           = [];
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];
-	protected $afterDelete          = [];*/
+	protected $afterDelete          = [];
+
+	public function fields()
+	{
+		return
+		[
+			'title' => 
+			[
+				'type' => 'text',
+				'label' => 'Título'
+			],
+			'image' => 
+			[
+				'type' => 'text',
+				'label' => 'Ícone'
+			],
+			'link' => 
+			[
+				'type' => 'text',
+				'label' => 'Link'
+			],
+		];
+	}
+
+	protected function setOwner(array $data)
+	{
+		$data['data']['user_id'] = $_SESSION['user_id'];
+
+		return $data;
+	}
+
+
 }
