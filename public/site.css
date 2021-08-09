@@ -89,6 +89,8 @@ header nav form input
     margin-bottom: 32px;
 }
 
+#header a{ color: white; }
+
 .btn-group
 {
     display: flex;

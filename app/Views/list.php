@@ -3,17 +3,23 @@
 <?php $this->section('content') ?>
 
 <div id="header">
-	<div class='container'>#<?=$moduleName?></div>
+	<div class='container'>
+
+    <?php if( isset($fk_parent) ): ?>
+    <a href="/admin/<?=$fk_parent?>">Voltar < </a>
+    <?php endif; ?>
+
+        
+        #<?=$moduleName?>
+    
+    </div>
 </div>
 
 <div class='container'>
 
     <a id="newBtn" class='btn-cta' href="/admin/<?=$source?>/new">📝 Novo item</a>
     
-    <?php if( isset($fk_parent) ): ?>
-    <a href="/admin/<?=$fk_parent?>">Voltar</a>
-    <?php endif; ?>
-
+    
     <table>
 
         <thead>

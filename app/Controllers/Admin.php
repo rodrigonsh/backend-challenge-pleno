@@ -119,8 +119,15 @@ class Admin extends BaseController
 			$new[$k] = $request->getPost($k);
 		}
 
-		$new['user_id'] = 1;
-		$new[$_SESSION['fk_parent']] = $_SESSION['fk_parent_id'];
+		$new['user_id'] = $_SESSION['user_id'];
+
+		if( isset($_SESSION['fk_parent'] ))
+		{
+			$new[$_SESSION['fk_parent']] = $_SESSION['fk_parent_id'];
+			$data['model']->insert($new);
+			$old = $_SESSION['fk_oldSource'];
+			return redirect()->to("/admin/$old/foreign/{$_SESSION['fk_parent']}/{$_SESSION['fk_parent_id']}");
+		}
 
 		$data['model']->insert($new);
 
@@ -156,8 +163,13 @@ class Admin extends BaseController
 			$edit[$k] = $request->getPost($k);
 		}
 
-		
 		$data['model']->update($id, $edit);
+		
+		if( isset($_SESSION['fk_parent'] ))
+		{
+			$old = $_SESSION['fk_oldSource'];
+			return redirect()->to("/admin/$old/foreign/{$_SESSION['fk_source']}/{$_SESSION['fk_parent_id']}");
+		}
 
 		return redirect()->to("/admin/$source");
 	}
@@ -218,6 +230,8 @@ class Admin extends BaseController
 		$fk = $fk_config[ $source ];
 
 		// isso aqui é pro admin/new poder saber quem é o parente
+		$_SESSION['fk_oldSource'] = $parent;
+		$_SESSION['fk_source'] = $source;
 		$_SESSION['fk_parent'] = $fk['fk_col'];
 		$_SESSION['fk_parent_id'] = $id;
 
