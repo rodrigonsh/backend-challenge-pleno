@@ -28,7 +28,18 @@
 
             <div class='container'>
 
-            <h1>SiteDemo</h1>
+            <h1>
+                <?php if( $contentClass == 'crud') : ?>
+                <a href="/admin">
+                    SiteDemo
+                </a>
+                <?php else : ?>
+                <a href="/">
+                    SiteDemo
+                </a>
+                <?php endif; ?>
+
+            </h1>
 
             <nav id="main-nav">
 

@@ -52,6 +52,8 @@ header h1
     background: url( img/logo-sitedemo-white.png );
 }
 
+header h1 a{ display: block; }
+
 header nav
 {
     flex-grow: 1;
