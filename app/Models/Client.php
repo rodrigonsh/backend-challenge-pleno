@@ -14,7 +14,7 @@ class Client extends Model
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['title', 'image', 'link'];
 
 	// Dates
 	protected $useTimestamps        = false;
