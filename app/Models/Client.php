@@ -31,8 +31,8 @@ class Client extends Model
 
 	// Callbacks
 	protected $allowCallbacks       = true;
-	protected $beforeInsert         = [];
-	protected $afterInsert          = ['setOwner'];
+	protected $beforeInsert         = ['setOwner'];
+	protected $afterInsert          = [];
 	protected $beforeUpdate         = [];
 	protected $afterUpdate          = [];
 	protected $beforeFind           = [];
