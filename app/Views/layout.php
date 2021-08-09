@@ -56,7 +56,7 @@
 
                 <a href="#">Ajuda</a>
                 <a href="#">Contato</a>
-                <a class='btn-cta btn-secondary' href="#">Começar</a>
+                <a class='btn-cta btn-secondary' href="/auth/login">Começar</a>
 
             </nav>
 

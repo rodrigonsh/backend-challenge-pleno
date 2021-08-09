@@ -1,3 +1,18 @@
+# Rodrigo Nishino
+## fullstack developer
+
+endereço para visualizar: 
+
+http://165.232.145.248
+http://165.232.145.248/auth/login
+
+email: teste@servidor.com
+senha: 12345678
+
+Esta foi a primeira vez que programei em codeigniter
+Fui aprendendo enquanto programava
+Interessante
+
 <p align="center"><a href="https://ezoom.com.br" target="_blank"><img src="https://www.ezoom.com.br/application/modules/comum/assets/img/logo-ezoom.png" width="400"></a></p>
 
 # Backend Challenge Pleno
