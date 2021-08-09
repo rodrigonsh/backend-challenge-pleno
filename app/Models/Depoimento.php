@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Service extends Model
+class Depoimento extends Model
 {
 	protected $DBGroup              = 'default';
-	protected $table                = 'services';
+	protected $table                = 'depoimentos';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
 	protected $returnType           = 'array';
 	protected $useSoftDeletes       = false;
 	protected $protectFields        = true;
-	protected $allowedFields        = ['title', 'image', 'description'];
+	protected $allowedFields        = ['username', 'depoimento', 'link', 'user_id', 'service_id'];
 
 	// Dates
 	protected $useTimestamps        = false;
@@ -31,8 +31,8 @@ class Service extends Model
 
 	// Callbacks
 	protected $allowCallbacks       = true;
-	protected $beforeInsert         = ['setOwner'];
-	protected $afterInsert          = [];
+	protected $beforeInsert         = [];
+	protected $afterInsert          = ['setOwner', 'setParent'];
 	protected $beforeUpdate         = [];
 	protected $afterUpdate          = [];
 	protected $beforeFind           = [];
@@ -44,42 +44,39 @@ class Service extends Model
 	{
 		return
 		[
-			'title' => 
+			'username' => 
 			[
 				'type' => 'text',
-				'label' => 'Título'
+				'label' => 'Nome/Username'
 			],
-			'image' => 
+			'depoimento' => 
 			[
 				'type' => 'text',
-				'label' => 'Ícone'
+				'label' => 'Depoimento'
 			],
-			'description' => 
+			'link' => 
 			[
 				'type' => 'text',
-				'label' => 'Descrição'
+				'label' => 'Link'
 			],
 		];
 	}
 
 	protected function setOwner(array $data)
 	{
+
 		$data['data']['user_id'] = $_SESSION['user_id'];
 
 		return $data;
 	}
 
-	public function cols()
+	protected function setParent(array $data)
 	{
-		return 
-		[
-			'depoimentos' => 
-			[
-				'label' => "Depoimentos", 
-				"source" => "depoimentos",
-				"fk_col" => "service_id"
-			]
-		];
+
+		$data['data'][$_SESSION['fk_parent']] = $_SESSION['fk_parent_id'];
+
+		return $data;
 	}
+
 
 }

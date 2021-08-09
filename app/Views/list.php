@@ -3,13 +3,17 @@
 <?php $this->section('content') ?>
 
 <div id="header">
-	<div class='container'>Retrieve</div>
+	<div class='container'>#<?=$moduleName?></div>
 </div>
 
 <div class='container'>
 
     <a id="newBtn" class='btn-cta' href="/admin/<?=$source?>/new">📝 Novo item</a>
     
+    <?php if( isset($fk_parent) ): ?>
+    <a href="/admin/<?=$fk_parent?>">Voltar</a>
+    <?php endif; ?>
+
     <table>
 
         <thead>
@@ -38,8 +42,12 @@
                 </td>
 
                 <?php if ( method_exists($model, 'cols') ) : ?>
-                <?php foreach($model->cols() as $col): ?>
-                <th><?=$col['label']?></th>
+                <?php foreach($model->cols() as $k=>$col): ?>
+                <td>
+                    <a href="/admin/<?=$source?>/foreign/<?=$k?>/<?=$i['id']?>">
+                        <?=$col['label']?>
+                    </a>
+                </td>
                 <?php endforeach ?>
                 <?php endif ?>
 

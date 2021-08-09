@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\User;
 use App\Models\Client;
 use App\Models\Service;
+use App\Models\Depoimento;
 
 class Admin extends BaseController
 {
@@ -40,16 +41,25 @@ class Admin extends BaseController
 			case 'users':
 				$model = new User();
 				$itemName = "email";
+				$moduleName = "Usuários";
 				break;
 
 			case 'clients':
 				$model = new Client();
 				$itemName = "title";
+				$moduleName = "Clientes";
 				break;
 
 			case 'services':
 				$model = new Service();
 				$itemName = "title";
+				$moduleName = "Serviços";
+				break;
+
+			case 'depoimentos':
+				$model = new Depoimento();
+				$itemName = "username";
+				$moduleName = "Depoimentos";
 				break;
 
 		}
@@ -59,7 +69,8 @@ class Admin extends BaseController
 			'contentClass' => 'crud',
 			'source' => $source,
 			'model' => $model,
-			'itemName' => $itemName
+			'itemName' => $itemName,
+			'moduleName' => $moduleName
 		];
 
 	}
@@ -69,10 +80,13 @@ class Admin extends BaseController
 
 		if ( !isset($_SESSION['user_id']) ) return redirect()->to('/auth/login');
 		
+		unset($_SESSION['fk_parent']);
+		unset($_SESSION['fk_parent_id']);
+
 		$data = $this->getModel($source);
 
 		$data['items'] = $data['model']->findAll();
-		
+
 		return view('list', $data);
 	}
 
@@ -105,7 +119,9 @@ class Admin extends BaseController
 			$new[$k] = $request->getPost($k);
 		}
 
-		
+		$new['user_id'] = 1;
+		$new[$_SESSION['fk_parent']] = $_SESSION['fk_parent_id'];
+
 		$data['model']->insert($new);
 
 		return redirect()->to("/admin/$source");
@@ -188,6 +204,28 @@ class Admin extends BaseController
 			return view('delete', $data);
 		}
 
+	}
+
+	public function foreign( $parent, $source, $id )
+	{
+
+		if ( !isset($_SESSION['user_id']) ) return redirect()->to('/auth/login');
+		
+		$old = $this->getModel($parent);
+		$data = $this->getModel($source);
+
+		$fk_config = $old['model']->cols();
+		$fk = $fk_config[ $source ];
+
+		// isso aqui é pro admin/new poder saber quem é o parente
+		$_SESSION['fk_parent'] = $fk['fk_col'];
+		$_SESSION['fk_parent_id'] = $id;
+
+		$data['fk_parent'] = $parent;
+
+		$data['items'] = $data['model']->where($fk['fk_col'], $id)->findAll();
+		
+		return view('list', $data);
 	}
 
 }
